@@ -10,8 +10,6 @@ namespace AdventOfCode
     {
         public int SolveFirstDay()
         {
-            Console.WriteLine("Day 1 / 1");
-
             int CurrentValue = 50;
             int count = 0;
 
@@ -47,8 +45,6 @@ namespace AdventOfCode
 
         public int SolveSecondDay()
         {
-            Console.WriteLine("Day 1 / 2");
-
             int CurrentValue = 50;
             int count = 0;
 
