@@ -49,53 +49,47 @@ namespace AdventOfCode
             int count = 0;
 
             //string[] input = ["L50", "R6", "L15", "L18", "R24", "R28", "L29", "L41", "L13", "R49", "R18", "R36", "L28", "L10", "R16", "R1", "L47", "R4", "R45", "R45"];
+            //string[] input = ["L201", "R300"];
+            //string[] input = ["R150", "R50"];
             string[] input = File.ReadAllLines("E:/domin/Documents/AdventOfCode/2025/Files/InputDay1-2.txt");
 
             foreach (var line in input)
             {
-                int value = int.Parse (line.Substring(1));
+                int value = int.Parse(line.Substring(1));
+                int wraps = 0;
                 if (line[0] == 'R')
                 {
-                    for (int i = 0; i < value; i++)
+                    for(int i = 0; i < value; i++)
                     {
                         CurrentValue++;
                         if (CurrentValue > 99)
                         {
                             CurrentValue = 0;
-                        }
-
-                        if (CurrentValue == 0)
-                        {
                             count++;
+                            wraps++;
                         }
                     }
-                    //while (CurrentValue > 99)
-                    //{
-                    //    CurrentValue -= 100;
-                    //    count++;
-                    //}
+                    if (CurrentValue == 0 )//when landing on 0
+                    {
+                        count--;
+                    }
                 }
                 else
                 {
-                    //CurrentValue -= value;
+                    if (CurrentValue == 0)//when starting on 0
+                    {
+                        count--;
+                    }
                     for (int i = 0; i < value; i++)
                     {
                         CurrentValue--;
                         if (CurrentValue < 0)
                         {
                             CurrentValue = 99;
-                        }
-
-                        if (CurrentValue == 0)
-                        {
                             count++;
+                            wraps++;
                         }
                     }
-                    //while (CurrentValue < 0)
-                    //{
-                    //    CurrentValue += 100;
-                    //    count++;
-                    //}
                 }
                 if (CurrentValue == 0)
                 {
